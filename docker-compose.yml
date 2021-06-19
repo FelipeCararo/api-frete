@@ -1,0 +1,50 @@
+version: '3'
+
+services: 
+  postgres:
+    image: postgres:11
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - node-db-net
+
+  app:  
+    container_name: app
+    build: ./node
+    entrypoint: dockerize -wait tcp://postgres:5432 -timeout 120s yarn dev
+    volumes: 
+      - ./node:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on: 
+      - postgres
+    networks:
+      - node-nginx-net
+      - node-db-net
+
+  nginx: 
+    container_name: nginx
+    build: ./nginx
+    restart: always
+    entrypoint: dockerize -wait http://app:3000 -timeout 300s /docker-entrypoint.sh nginx -g 'daemon off;'
+    ports: 
+      - 8080:80
+    depends_on: 
+      - app
+    networks:
+      - node-nginx-net
+
+networks:
+  node-nginx-net:
+    driver: bridge
+  node-db-net:
+    driver: bridge
+
+volumes:
+  pgdata:

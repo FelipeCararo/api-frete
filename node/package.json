@@ -1,0 +1,45 @@
+{
+  "name": "app-frete",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Felipe Gorges Cararo",
+    "email": "felipe.gorges.cararo@gmail.com"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.5.3",
+    "supertest": "^5.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.29.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "prettier": "^2.3.1",
+    "nodemon": "^2.0.2",
+    "youch": "^2.0.10"
+  },
+  "dependencies": {
+    "@hapi/boom": "^9.0.0",
+    "axios": "^0.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "helmet": "^3.21.3",
+    "http-status-codes": "^1.4.0",
+    "pg": "^8.0.0",
+    "sequelize": "^5.21.11",
+    "sequelize-cli": "^5.5.1",
+    "yup": "^0.29.1"
+  }
+}
