@@ -59,7 +59,7 @@ class FreteController {
   }
 
   /**
-   * Realiza a criação do user
+   * Realiza o tratamento da quote
    * @param {Object} req
    * @param {Object} res
    */
@@ -140,7 +140,7 @@ class FreteController {
   }
 
   /**
-   * Rotas dos Planos de Venda
+   * Rotas do frete controller
    */
   routes() {
     routes.get('/', this.connect);
